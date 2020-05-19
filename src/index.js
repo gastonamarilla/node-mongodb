@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express ();
 const path = require('path');
-const exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars')
+const methodOverride = require('method-override');
 
 //Settings
 app.set('port', process.env.PORT || 3000);
@@ -14,7 +15,8 @@ app.engine('.hbs', exphbs({
 }));
 app.set('view engine','.hbs');
 //Midllewares
-
+app.use(express.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 //Global variables
 
 //Routes
